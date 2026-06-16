@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  /* Typography */
+  --font-heading-name: "Poppins";
+  --font-body-name: "Inter";
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --letter-spacing-heading: -0.02em;
+  --letter-spacing-body: 0px;
+
+  /* Spacing */
+  --space-base: 1rem;
+
+  /* Borders */
+  --radius-small: 0.5rem;
+  --radius-large: 1rem;
+  --border-width: 1px;
+
+  /* Shadows */
+  --shadow-color: 30 58 138; /* Dark Blue Shadow */
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 4px;
+  --shadow-blur: 20px;
+  --shadow-spread: -2px;
+  --shadow-opacity: 0.1;
+
+  --shadow-custom:
+    0 10px 15px -3px rgba(var(--shadow-color), var(--shadow-opacity)),
+    0 4px 6px -2px rgba(var(--shadow-color), 0.05);
+  --shadow-custom-hover:
+    0 20px 25px -5px rgba(var(--shadow-color), 0.15),
+    0 10px 10px -5px rgba(var(--shadow-color), 0.04);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
