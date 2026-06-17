@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Cookies from "js-cookie";
-import { Award, Bell, BookOpen, CalendarCheck, CheckCircle2, Clock, GraduationCap, LogOut, TrendingUp } from "lucide-react";
+import { Award, Bell, BookOpen, CalendarCheck, CheckCircle2, Clock, GraduationCap, LogOut, TrendingUp, Bot } from "lucide-react";
 import api from "@/utils/api";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 
@@ -102,6 +102,7 @@ export default function StudentDashboard() {
               { href: "/student/attendance", label: "My Attendance", icon: CalendarCheck },
               { href: "/student/upcoming", label: "Upcoming Work", icon: Clock },
               { href: "/student/notifications", label: "Notifications", icon: Bell },
+              { href: "/student/ai-analysis", label: "AI Analysis", icon: Bot },
             ].map((item) => {
               const Icon = item.icon;
               return (

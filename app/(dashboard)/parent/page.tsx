@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Cookies from "js-cookie";
-import { Baby, Bell, BookOpen, CalendarCheck, ClipboardList, GraduationCap, LogOut, TrendingUp, Users } from "lucide-react";
+import { Baby, Bell, BookOpen, CalendarCheck, ClipboardList, GraduationCap, LogOut, TrendingUp, Users, Bot } from "lucide-react";
 import api from "@/utils/api";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 
@@ -101,6 +101,7 @@ export default function ParentDashboard() {
             {[
               { href: "/parent/children", label: "My Children", icon: Baby },
               { href: "/parent/announcements", label: "Announcements", icon: Bell },
+              { href: "/parent/ai-analysis", label: "AI Analysis", icon: Bot },
             ].map((item) => {
               const Icon = item.icon;
               return (

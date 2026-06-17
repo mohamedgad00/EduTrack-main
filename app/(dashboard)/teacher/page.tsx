@@ -13,6 +13,7 @@ import {
   LogOut,
   Search,
   Users,
+  Bot,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import api from "@/utils/api";
@@ -128,6 +129,7 @@ export default function TeacherDashboard() {
             { href: "/teacher/students", label: "Students", icon: Users },
             { href: "/teacher/assessments", label: "Assessments", icon: FileQuestion },
             { href: "/teacher/attendance", label: "Attendance", icon: CalendarCheck },
+            { href: "/teacher/ai-analysis", label: "AI Analysis", icon: Bot },
           ].map((item) => {
             const Icon = item.icon;
             return (
