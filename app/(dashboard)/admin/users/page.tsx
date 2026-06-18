@@ -227,20 +227,17 @@ export default function UsersPage() {
     });
   }, [activeRoleFilter, searchQuery, users]);
 
-  // Calculates total pages based on the number of filtered users and the defined page size, ensuring that there is at least one page even if there are no users. It also determines the current page from the URL query parameters, validating it to ensure it falls within the valid range of pages. This allows for robust pagination that responds to user input and URL changes.
   const totalPages = Math.max(1, Math.ceil(filteredUsers.length / PAGE_SIZE));
   const currentPage =
     Number.isFinite(currentPageParam) && currentPageParam > 0
       ? Math.min(currentPageParam, totalPages)
       : 1;
 
-  // Calculates the subset of users to display on the current page based on the active filters and pagination settings.
   const paginatedUsers = useMemo(() => {
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     return filteredUsers.slice(startIndex, startIndex + PAGE_SIZE);
   }, [currentPage, filteredUsers]);
 
-  // Updates the URL query parameters to reflect the selected role filter, resetting the page to 1 to ensure users see the first page of results for the new filter.
   const updateRoleFilter = (role: RoleFilter) => {
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.set("role", role);
@@ -248,7 +245,6 @@ export default function UsersPage() {
     router.push(`${pathname}?${nextParams.toString()}`);
   };
 
-  // Updates the URL query parameters to reflect the current search query, ensuring that the page resets to 1 when a new search is performed. This allows users to share URLs with specific search queries and filters applied.
   const updateSearchQuery = (value: string) => {
     const nextParams = new URLSearchParams(searchParams.toString());
 
@@ -262,7 +258,6 @@ export default function UsersPage() {
     router.push(`${pathname}?${nextParams.toString()}`);
   };
 
-  // Updates the URL query parameters to reflect the selected page, ensuring that the page number stays within valid bounds. This allows users to navigate through pages of results while maintaining the current filters and search query in the URL.
   const updatePage = (nextPage: number) => {
     const safePage = Math.min(Math.max(1, nextPage), totalPages);
     const nextParams = new URLSearchParams(searchParams.toString());
@@ -270,7 +265,6 @@ export default function UsersPage() {
     router.push(`${pathname}?${nextParams.toString()}`);
   };
 
-  // Handles user deletion with a confirmation prompt and error handling. It first attempts to delete the user via a general endpoint, and if that fails (potentially due to role-specific constraints), it tries the role-specific endpoint. This approach ensures maximum compatibility with different backend implementations while providing feedback to the user.
   const handleDeleteUser = async (user: TableUser) => {
     if (!user.userId) {
       showToast("error", "User id not found. Cannot delete this record.");
