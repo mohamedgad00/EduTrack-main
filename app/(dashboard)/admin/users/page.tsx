@@ -7,6 +7,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import api from "@/utils/api";
 import { showToast } from "@/utils/toastUtils";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
+import Swal from "sweetalert2";
 
 type RoleFilter = "all" | "student" | "teacher" | "parent";
 
@@ -276,9 +277,19 @@ export default function UsersPage() {
       return;
     }
 
-    const confirmed = window.confirm(`Delete ${user.name}? This action cannot be undone.`);
+    const result = await Swal.fire({
+      title: `Delete ${user.name}?`,
+      text: "You will not be able to undo this action.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc2626",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete it",
+      cancelButtonText: "Cancel",
+      reverseButtons: true,
+    });
 
-    if (!confirmed) {
+    if (!result.isConfirmed) {
       return;
     }
 
